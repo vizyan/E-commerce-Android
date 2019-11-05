@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tugasakhir">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.Transaction.ListTransactionActivity"></activity>
+        <activity android:name=".ui.Transaction.TransactionActivity" />
+        <activity android:name=".ui.Shipment.ShipmentActivity" />
+        <activity android:name=".ui.Product.CartTransActivity" />
+        <activity
+            android:name=".ui.User.UserActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".ui.Dashboard.DashboardActivity" />
+        <activity
+            android:name=".ui.Splashscreen.SplashscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.Product.ProductActivity" />
+        <activity android:name=".ui.Home.HomeActivity" />
+        <activity
+            android:name=".ui.Auth.SignupActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.Auth.SigninActivity"
+            android:windowSoftInputMode="stateHidden" />
+    </application>
+
+</manifest>

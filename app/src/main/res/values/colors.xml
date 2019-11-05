@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name="pink">#FCE4EC</color>
+    <color name="color_white_semitransparent">#99FFFFFF</color>
+
+    <color name="gradient1">#35A1FC</color>
+    <color name="gradient2">#86EDEC</color>
+    <color name="gradient3">#F4F9FB</color>
+    <color name="gradient4">#0479ED</color>
+    <color name="gradient5">#7E66E7</color>
+    <color name="gradient6">#673AB7</color>
+</resources>
