@@ -31,7 +31,7 @@ import com.example.tugasakhir.util.Constant;
 
 import java.util.List;
 
-public class ShopFragment extends Fragment implements DashboardView, ProductListener {
+public class HomeFragment extends Fragment implements DashboardView, ProductListener {
 
     private DashboardPresenter dashboardPresenter;
     private ProductAdapter productAdapter;

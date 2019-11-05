@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.Transaction.ListTransactionActivity"></activity>
-        <activity android:name=".ui.Transaction.TransactionActivity" />
+        <activity android:name=".ui.Transaction.DetailTransactionActivity" />
         <activity android:name=".ui.Shipment.ShipmentActivity" />
-        <activity android:name=".ui.Product.CartTransActivity" />
+        <activity android:name=".ui.Transaction.TransactionActivity" />
         <activity
             android:name=".ui.User.UserActivity"
             android:windowSoftInputMode="stateHidden" />

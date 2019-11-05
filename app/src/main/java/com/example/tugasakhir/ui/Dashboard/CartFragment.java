@@ -1,6 +1,7 @@
 package com.example.tugasakhir.ui.Dashboard;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,13 +31,17 @@ import com.example.tugasakhir.ui.Product.ProductActivity;
 import com.example.tugasakhir.util.Constant;
 import com.google.gson.Gson;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class CartFragment extends Fragment implements DashboardView, CartListener {
 
     private DashboardPresenter dashboardPresenter;
     private CartAdapter cartAdapter;
+    private DataCart dataCart;
     private List<DataCart> cartList;
+    NumberFormat numberFormat;
 
     RecyclerView rvCart;
     Button btnCheckout;
@@ -111,6 +117,29 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
         rvCart.setAdapter(cartAdapter);
     }
 
+    private void showDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setTitle("Hapus Keranjang");
+
+        alertDialogBuilder
+                .setMessage("Apakah anda ingin menghapus produk ini pada keranjang?")
+                .setIcon(R.mipmap.ic_launcher)
+                .setCancelable(false)
+                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dashboardPresenter.deleteCart(dataCart.getId());
+                    }
+                })
+                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     @Override
     public void successProduct(List<DataProduct> data) {
 
@@ -134,6 +163,8 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
 
     @Override
     public void successCart(List<DataCart> data) {
+        numberFormat = NumberFormat.getInstance(Locale.ITALY);
+        String total = "0";
         sum = 0;
         srlcart.setRefreshing(false);
         cartList = data;
@@ -148,9 +179,10 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
         for (int i = 0; i < data.size(); i++){
             DataCart dataCart = data.get(i);
             sum = sum + dataCart.getTotal();
+            total = numberFormat.format(dataCart.getTotal());
         }
 
-        tvTotal.setText("Total : Rp " +sum);
+        tvTotal.setText("Total : Rp " +total);
     }
 
     @Override
@@ -172,6 +204,7 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
 
     @Override
     public void deleteItem(DataCart dataCart) {
-        dashboardPresenter.deleteCart(dataCart.getId());
+        this.dataCart = dataCart;
+        showDialog();
     }
 }

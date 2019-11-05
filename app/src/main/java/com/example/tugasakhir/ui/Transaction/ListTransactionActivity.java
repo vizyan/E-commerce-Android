@@ -13,6 +13,7 @@ import com.example.tugasakhir.R;
 import com.example.tugasakhir.adapter.Cart.CartAdapter;
 import com.example.tugasakhir.adapter.Transaction.TransAdapter;
 import com.example.tugasakhir.adapter.Transaction.TransListener;
+import com.example.tugasakhir.data.model.Product.DataProduct;
 import com.example.tugasakhir.data.model.Transaction.DataTrans;
 import com.example.tugasakhir.data.model.User.DataUser;
 import com.google.gson.Gson;
@@ -112,6 +113,16 @@ public class ListTransactionActivity extends AppCompatActivity implements Transa
     @Override
     public String getNote() {
         return null;
+    }
+
+    @Override
+    public void successCart() {
+
+    }
+
+    @Override
+    public void successProduct(DataProduct data) {
+
     }
 
     @Override

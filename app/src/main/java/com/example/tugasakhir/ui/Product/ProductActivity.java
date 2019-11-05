@@ -3,9 +3,7 @@ package com.example.tugasakhir.ui.Product;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +13,8 @@ import android.widget.TextView;
 import com.example.tugasakhir.R;
 import com.example.tugasakhir.data.model.Product.DataProduct;
 import com.example.tugasakhir.data.model.User.DataUser;
-import com.example.tugasakhir.ui.Auth.SigninActivity;
 import com.example.tugasakhir.ui.Transaction.TransactionActivity;
 import com.example.tugasakhir.util.Constant;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -84,7 +80,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent transCart = new Intent(ProductActivity.this, CartTransActivity.class);
+                Intent transCart = new Intent(ProductActivity.this, TransactionActivity.class);
                 transCart.putExtra(Constant.Extra.PRODUCT_ID, dataProduct.getId().toString());
                 transCart.putExtra(Constant.Extra.CART_OR_SINGLE, "cart");
                 startActivity(transCart);
@@ -94,7 +90,7 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
         btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent transCart = new Intent(ProductActivity.this, CartTransActivity.class);
+                Intent transCart = new Intent(ProductActivity.this, TransactionActivity.class);
                 transCart.putExtra(Constant.Extra.PRODUCT_ID, dataProduct.getId().toString());
                 transCart.putExtra(Constant.Extra.CART_OR_SINGLE, "buy");
                 startActivity(transCart);

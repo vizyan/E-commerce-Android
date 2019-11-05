@@ -35,7 +35,6 @@ class ProductViewHolder extends RecyclerView.ViewHolder {
     public void bind(final DataProduct dataProduct, final ProductListener productListener) {
         numberFormat = NumberFormat.getInstance(Locale.ITALY);
         String price = numberFormat.format(dataProduct.getPrice());
-        productListener.displayImgProduct(ivItemP, dataProduct);
         tvItemName.setText(dataProduct.getName());
         tvItemPrice.setText("Rp "+price);
 

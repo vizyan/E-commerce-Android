@@ -12,11 +12,15 @@ import com.example.tugasakhir.R;
 import com.example.tugasakhir.data.model.Cart.DataCart;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 class CartViewHolder extends RecyclerView.ViewHolder {
     private TextView tvCartName, tvCartPrice, tvCartMuch;
     private ImageView ivItemP;
     private ConstraintLayout clCartItem;
     ImageButton ibDeleteItem;
+    NumberFormat numberFormat;
 
     public CartViewHolder(View view) {
         super(view);
@@ -33,9 +37,11 @@ class CartViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(final DataCart dataCart, final CartListener cartListener) {
+        numberFormat = NumberFormat.getInstance(Locale.ITALY);
+        String total = numberFormat.format(dataCart.getTotal());
         cartListener.displayImgProject(ivItemP, dataCart);
         tvCartName.setText(dataCart.getName());
-        tvCartPrice.setText("Rp "+dataCart.getTotal().toString());
+        tvCartPrice.setText("Rp "+total);
         tvCartMuch.setText("Jumlah : "+dataCart.getMuch().toString());
 
         Picasso.get()

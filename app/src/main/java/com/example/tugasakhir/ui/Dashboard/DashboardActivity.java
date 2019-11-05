@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.tugasakhir.R;
@@ -76,7 +73,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardVie
 
     private void initTabAdapter(){
         adapter = new TabAdapter(getSupportFragmentManager(), this);
-        adapter.addFragment(new ShopFragment(), "Home", tabIcons[0]);
+        adapter.addFragment(new HomeFragment(), "Home", tabIcons[0]);
         adapter.addFragment(new CartFragment(), "Keranjang", tabIcons[1]);
         adapter.addFragment(new UserFragment(), "Akun", tabIcons[2]);
         viewPager.setAdapter(adapter);
