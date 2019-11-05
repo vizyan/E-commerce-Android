@@ -133,7 +133,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardVie
             Gson gson = new Gson();
             DataUser dataUser = gson.fromJson(userPref, DataUser.class);
             dashboardPresenter.login(dataUser.getEmail(), password);
-            dashboardPresenter.getCart(dataUser.getId());
+            dashboardPresenter.getCartByUser(dataUser.getId());
         }
     }
 

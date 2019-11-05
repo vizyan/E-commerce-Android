@@ -71,10 +71,15 @@ public interface Api {
             @Path("id") int id
     );
 
-    /* ---- PRODUK ---- */
+    /* ---- PRODUCT ---- */
 
     @GET("/api/products/")
     Call<ResponseListProducts> getAllProducts();
+
+    @GET("/api/products/category/{id}")
+    Call<ResponseListProducts> getProductByCat(
+            @Path("id") int id
+    );
 
     @GET("/api/products/{id}")
     Call<ResponseProduct> getProductById(

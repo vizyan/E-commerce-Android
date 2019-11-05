@@ -27,6 +27,10 @@ public class DashboardPresenter {
         this.dashboardView = dashboardView;
     }
 
+    // -----------------------------------------------------------------------------
+    // API product
+    // -----------------------------------------------------------------------------
+
     public void getAllProduct(){
         RetrofitClient.getInstance()
                 .getApi()
@@ -47,6 +51,30 @@ public class DashboardPresenter {
                     public void onFailure(Call<ResponseListProducts> call, Throwable t) {
                         dashboardView.failed(t.getMessage());
                         Log.e(TAG, "->getAllProduct(): onFailure: " + t.getMessage());
+                    }
+                });
+    }
+
+    public void getProductByCat(int id){
+        RetrofitClient.getInstance()
+                .getApi()
+                .getProductByCat(id)
+                .enqueue(new Callback<ResponseListProducts>() {
+                    @Override
+                    public void onResponse(Call<ResponseListProducts> call, Response<ResponseListProducts> response) {
+                        if (response.isSuccessful()){
+                            System.out.println(TAG+"->getProductByCat(): onResponse: " + response.body().getMessage());
+                            dashboardView.successProduct(response.body().getData());
+                        } else {
+                            dashboardView.failed(response.body().getMessage());
+                            Log.e(TAG, "->getProductByCat(): onResponse: " + response.errorBody());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseListProducts> call, Throwable t) {
+                        dashboardView.failed(t.getMessage());
+                        Log.e(TAG, "->getProductByCat(): onFailure: " + t.getMessage());
                     }
                 });
     }
@@ -78,7 +106,6 @@ public class DashboardPresenter {
                     }
                 });
     }
-
 
     public void login(String email, String password){
 //      String token = randomStrGenerator.getRandomString(10);
@@ -164,7 +191,7 @@ public class DashboardPresenter {
     // API cart
     // -----------------------------------------------------------------------------
 
-    public void getCart(int id){
+    public void getCartByUser(int id){
         RetrofitClient.getInstance()
                 .getApi()
                 .getCartByUser(id)

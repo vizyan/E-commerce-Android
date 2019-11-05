@@ -10,9 +10,7 @@ import com.example.tugasakhir.data.model.Cart.DataCart;
 
 public interface CartListener {
 
-    void onCartClick(DataCart dataCart);
-
-    void displayImgProject(ImageView imgProject, DataCart dataCart);
+    void onItemClick(DataCart dataCart);
 
     void deleteItem(DataCart dataCart);
 }

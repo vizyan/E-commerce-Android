@@ -62,11 +62,11 @@ public class UserFragment extends Fragment implements DashboardView {
         initPresenter();
         initView();
         initPreference();
-        initExchange();
+//        initExchange();
         initRefresh();
         initUserDetail();
         initTransList();
-        initLogout();
+        initSignout();
     }
 
     public void initPresenter() {
@@ -125,7 +125,7 @@ public class UserFragment extends Fragment implements DashboardView {
         });
     }
 
-    public void initLogout() {
+    public void initSignout() {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,7 +146,7 @@ public class UserFragment extends Fragment implements DashboardView {
         numberFormat = NumberFormat.getInstance(Locale.ITALY);
         double xlmBalance = Double.parseDouble(balance);
         String balanceXlm =  "" + numberFormat.format(xlmBalance) + " Lumens";
-        String balanceBtc = "Rp " + numberFormat.format(xlmBalance * 998);
+        String balanceBtc = "Rp " + numberFormat.format(xlmBalance * 800);
         tvUserName.setText(dataUser.getName());
         tvUserEmail.setText(dataUser.getEmail());
         tvBalanceXlm.setText(balanceXlm);

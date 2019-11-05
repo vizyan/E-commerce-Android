@@ -43,12 +43,12 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
     private List<DataCart> cartList;
     NumberFormat numberFormat;
 
-    RecyclerView rvCart;
     Button btnCheckout;
-    ImageView ivCartP;
-    TextView tvTotal;
     ConstraintLayout clFragmentCart;
+    ImageView ivCartP;
+    RecyclerView rvCart;
     SwipeRefreshLayout srlcart;
+    TextView tvTotal;
 
     int id, sum;
 
@@ -81,7 +81,7 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
             Gson gson = new Gson();
             DataUser dataUser = gson.fromJson(userPreference, DataUser.class);
             id = dataUser.getId();
-            dashboardPresenter.getCart(id);
+            dashboardPresenter.getCartByUser(id);
         }
     }
 
@@ -99,7 +99,7 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
         srlcart.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                dashboardPresenter.getCart(id);
+                dashboardPresenter.getCartByUser(id);
                 srlcart.setRefreshing(true);
             }
         });
@@ -187,19 +187,14 @@ public class CartFragment extends Fragment implements DashboardView, CartListene
 
     @Override
     public void success(Integer data) {
-        dashboardPresenter.getCart(id);
+        dashboardPresenter.getCartByUser(id);
     }
 
     @Override
-    public void onCartClick(DataCart dataCart) {
+    public void onItemClick(DataCart dataCart) {
         Intent product = new Intent(getActivity(), ProductActivity.class);
         product.putExtra(Constant.Extra.PRODUCT_ID, dataCart.getIdProduct().toString());
         startActivity(product);
-    }
-
-    @Override
-    public void displayImgProject(ImageView imgProject, DataCart dataCart) {
-
     }
 
     @Override

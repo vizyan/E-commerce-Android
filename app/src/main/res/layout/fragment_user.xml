@@ -87,10 +87,10 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="20dp"
                         android:layout_weight="1"
-                        android:text="Detail Akun"
+                        android:background="@drawable/bg_rounded_solid_purple"
+                        android:text="Detail akun"
                         android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:background="@drawable/bg_rounded_solid_purple"/>
+                        android:textColor="@color/white" />
 
                     <Button
                         android:id="@+id/btnUserLogout"
@@ -101,10 +101,10 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="20dp"
                         android:layout_weight="1"
-                        android:text="Logout"
+                        android:background="@drawable/bg_rounded_trans_red"
+                        android:text="Signout"
                         android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:background="@drawable/bg_rounded_trans_red"/>
+                        android:textColor="@color/white" />
 
                 </LinearLayout>
 

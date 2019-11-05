@@ -39,7 +39,6 @@ class CartViewHolder extends RecyclerView.ViewHolder {
     public void bind(final DataCart dataCart, final CartListener cartListener) {
         numberFormat = NumberFormat.getInstance(Locale.ITALY);
         String total = numberFormat.format(dataCart.getTotal());
-        cartListener.displayImgProject(ivItemP, dataCart);
         tvCartName.setText(dataCart.getName());
         tvCartPrice.setText("Rp "+total);
         tvCartMuch.setText("Jumlah : "+dataCart.getMuch().toString());
@@ -53,7 +52,7 @@ class CartViewHolder extends RecyclerView.ViewHolder {
         clCartItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartListener.onCartClick(dataCart);
+                cartListener.onItemClick(dataCart);
             }
         });
 
